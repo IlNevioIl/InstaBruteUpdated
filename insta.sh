@@ -49,7 +49,7 @@ printf "\e[1;92m ) )| ||  _ \  /___)(_   _)(____ |  _bt     \e[0m\n"
 printf "\e[1;77m(_/ | || | | ||___ |  | |_ / ___ |  _____   \e[0m\n"
 printf "\e[1;77m    |_||_| |_|(___/    \__)\_____| (_____)  \e[0m\n"
 printf "\n"
-printf "\e[1;77m\e[45m   Instagram Brute Forcer v1.6 Author: _bt Forked from Ha3MrX(Github/IG)   \e[0m\n"
+printf "\e[1;77m\e[45m   Instagram Brute Forcer v1.7 Author: _bt Forked from Ha3MrX(Github/IG)   \e[0m\n"
 printf "\n"
 }
 
