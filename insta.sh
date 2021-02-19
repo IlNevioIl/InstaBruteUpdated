@@ -16,23 +16,23 @@ var2=$(echo $var | awk -F ';' '{print $2}' | cut -d '=' -f3)
 
 checkroot() {
 if [[ "$(id -u)" -ne 0 ]]; then
-    printf "\e[1;77mPlease, run this program as root!\n\e[0m"
+    printf "\e[1;77mPlease, run this program as root! Try: bash insta.sh\n\e[0m"
     exit 1
 fi
 }
 
 dependencies() {
 
-command -v openssl > /dev/null 2>&1 || { echo >&2 "I require openssl but it's not installed. Aborting."; exit 1; }
-command -v tor > /dev/null 2>&1 || { echo >&2 "I require tor but it's not installed. Aborting."; exit 1; }
-command -v curl > /dev/null 2>&1 || { echo >&2 "I require curl but it's not installed. Aborting."; exit 1; }
-command -v awk > /dev/null 2>&1 || { echo >&2 "I require awk but it's not installed. Aborting."; exit 1; }
-command -v sed > /dev/null 2>&1 || { echo >&2 "I require sed but it's not installed. Aborting."; exit 1; }
-command -v cat > /dev/null 2>&1 || { echo >&2 "I require cat but it's not installed. Aborting."; exit 1; }
-command -v tr > /dev/null 2>&1 || { echo >&2 "I require tr but it's not installed. Aborting."; exit 1; }
-command -v wc > /dev/null 2>&1 || { echo >&2 "I require wc but it's not installed. Aborting."; exit 1; }
-command -v cut > /dev/null 2>&1 || { echo >&2 "I require cut but it's not installed. Aborting."; exit 1; }
-command -v uniq > /dev/null 2>&1 || { echo >&2 "I require uniq but it's not installed. Aborting."; exit 1; }
+command -v openssl > /dev/null 2>&1 || { echo >&2 "Openssl is not installed. Try: apt-get install openssl . Aborting."; exit 1; }
+command -v tor > /dev/null 2>&1 || { echo >&2 "Tor is not installed. Try: apt-get install tor . Aborting ."; exit 1; }
+command -v curl > /dev/null 2>&1 || { echo >&2 "Curl is not installed. Try: apt-get install curl . Aborting."; exit 1; }
+command -v awk > /dev/null 2>&1 || { echo >&2 "Awk is not installed. Try: apt-get install awk . Aborting."; exit 1; }
+command -v sed > /dev/null 2>&1 || { echo >&2 "Sed is not installed. Try: apt-get install sed . Aborting."; exit 1; }
+command -v cat > /dev/null 2>&1 || { echo >&2 "Cat is not installed. Try: apt-get install cat . Aborting."; exit 1; }
+command -v tr > /dev/null 2>&1 || { echo >&2 "Tr is not installed. Try: apt-get install tr . Aborting."; exit 1; }
+command -v wc > /dev/null 2>&1 || { echo >&2 "Wc is not installed. Try: apt-get install wc . Aborting."; exit 1; }
+command -v cut > /dev/null 2>&1 || { echo >&2 "Cut is not installed. Try: apt-get install cut . Aborting."; exit 1; }
+command -v uniq > /dev/null 2>&1 || { echo >&2 "Uniq is not installed. Try: apt-get install uniq . Aborting."; exit 1; }
 if [ $(ls /dev/urandom >/dev/null; echo $?) == "1" ]; then
 echo "/dev/urandom not found!"
 exit 1
@@ -103,7 +103,7 @@ mkdir sessions
 fi
 printf "user=\"%s\"\npass=\"%s\"\nwl_pass=\"%s\"\n" $user $pass $wl_pass > sessions/store.session.$user.$(date +"%FT%H%M")
 printf "\e[1;77mSession saved.\e[0m\n"
-printf "\e[1;92mUse ./InstaBrute --resume\n"
+printf "\e[1;92mUse ./insta.sh --resume\n"
 else
 exit 1
 fi
@@ -171,8 +171,8 @@ let counter++
 done
 read -p $'\e[1;92mChoose a session number: \e[0m' fileresume
 source $(ls sessions/store.session* | sed ''$fileresume'q;d')
-default_threads="10"
-read -p $'\e[1;92mThreads (Use < 20, Default 10): \e[0m' threads
+default_threads="1"
+read -p $'\e[1;92mThreads (Use < 20, Default 1): \e[0m' threads
 threads="${threads:-${default_threads}}"
 
 printf "\e[1;92m[*] Resuming session for user:\e[0m \e[1;77m%s\e[0m\n" $user
