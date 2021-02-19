@@ -1,6 +1,6 @@
 #!/bin/bash
-# FB by: https://www.youtube.com/c/HA-MRX
-# Instagram: @iemprator_ha_mrx
+# FB updated by _bt
+
 
 trap 'store;exit 1' 2
 string4=$(openssl rand -hex 32 | cut -c 1-4)
@@ -43,13 +43,13 @@ fi
 banner() {
 
 printf "\e[1;92m     _                                      \e[0m\n"
-printf "\e[1;92m _  | | https://www.youtube.com/c/HA-MRX    \e[0m\n"
+printf "\e[1;92m _  | |                                     \e[0m\n"
 printf "\e[1;92m( \ | | ____    ___  _| |_  _____           \e[0m\n"
-printf "\e[1;92m ) )| ||  _ \  /___)(_   _)(____ |  Ha3MrX  \e[0m\n"
+printf "\e[1;92m ) )| ||  _ \  /___)(_   _)(____ |  _bt     \e[0m\n"
 printf "\e[1;77m(_/ | || | | ||___ |  | |_ / ___ |  _____   \e[0m\n"
 printf "\e[1;77m    |_||_| |_|(___/    \__)\_____| (_____)  \e[0m\n"
 printf "\n"
-printf "\e[1;77m\e[45m   Instagram Brute Forcer v1.5 Author: Ha3MrX (Github/IG)   \e[0m\n"
+printf "\e[1;77m\e[45m   Instagram Brute Forcer v1.6 Author: _bt Forked from Ha3MrX(Github/IG)   \e[0m\n"
 printf "\n"
 }
 
@@ -67,8 +67,8 @@ else
 default_wl_pass="passwords.lst"
 read -p $'\e[1;92mPassword List (Enter to default list): \e[0m' wl_pass
 wl_pass="${wl_pass:-${default_wl_pass}}"
-default_threads="10"
-read -p $'\e[1;92mThreads (Use < 20, Default 10): \e[0m' threads
+default_threads="1"
+read -p $'\e[1;92mThreads (Use < 20, Default 1): \e[0m' threads
 threads="${threads:-${default_threads}}"
 fi
 }
@@ -103,7 +103,7 @@ mkdir sessions
 fi
 printf "user=\"%s\"\npass=\"%s\"\nwl_pass=\"%s\"\n" $user $pass $wl_pass > sessions/store.session.$user.$(date +"%FT%H%M")
 printf "\e[1;77mSession saved.\e[0m\n"
-printf "\e[1;92mUse ./instashell --resume\n"
+printf "\e[1;92mUse ./InstaBrute --resume\n"
 else
 exit 1
 fi
